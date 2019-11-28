@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
-import Home from "./pages/home";
-import NotFound from "./pages/notfound";
+import { Home, NotFound } from "./pages";
+//import Home from "./pages/home";
+//import NotFound from "./pages/notfound";
 import * as serviceWorker from "./serviceWorker";
 
 const routing = (
