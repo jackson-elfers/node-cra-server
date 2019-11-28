@@ -1,18 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import rootReducer from "./reducers";
 import { Home, NotFound } from "./pages";
 import * as serviceWorker from "./serviceWorker";
 
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
 const routing = (
-  <Router>
-    <div>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route component={NotFound} />
-      </Switch>
-    </div>
-  </Router>
+  <Provider store={store}>
+    <Router>
+      <div>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route component={NotFound} />
+        </Switch>
+      </div>
+    </Router>
+  </Provider>
 );
 
 ReactDOM.render(routing, document.getElementById("root"));
