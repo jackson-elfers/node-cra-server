@@ -2,8 +2,11 @@ import React from "react";
 
 class Main extends React.Component {
   render() {
-    return <p>Not Found</p>;
+    return (
+      <div>
+        <h1>Not Found</h1>
+      </div>
+    );
   }
 }
-
 export default Main;
