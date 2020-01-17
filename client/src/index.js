@@ -5,7 +5,9 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers";
+import "./globals/styles";
 import { Home, NotFound } from "./pages";
+// import {} from "./globals/components";
 import * as serviceWorker from "./serviceWorker";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
