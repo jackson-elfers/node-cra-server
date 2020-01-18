@@ -4,6 +4,7 @@
   "description": "",
   "main": "./dist/app.js",
   "scripts": {
+    "linter": "tslint src/**/*.ts",
     "client": "cd client && npm run start",
     "test": "ts-mocha -p ./tsconfig.json src/**/*.spec.ts",
     "monitor": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' ./src/app.ts",
