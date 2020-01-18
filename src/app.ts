@@ -3,6 +3,6 @@ const express = require("express");
 const app = express();
 
 app.listen(process.env.PORT, function() {
-  require("./src")(app);
+  require("./index")(app);
   console.log("active port: " + process.env.PORT);
 });

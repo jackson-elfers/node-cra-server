@@ -1,8 +1,8 @@
-// index: main
+export {};
 
 module.exports = function(app) {
   // middleware
-  require("./middleware.js")(app);
+  require("./middleware")(app);
 
   // routes
   require("./routes")(app);
