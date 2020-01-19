@@ -2,15 +2,13 @@
   "name": "node-cra-server",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/app.js",
+  "main": "server.js",
   "scripts": {
-    "linter": "tslint src/**/*.ts",
     "client": "cd client && npm run start",
-    "test": "ts-mocha -p ./tsconfig.json src/**/*.spec.ts",
-    "monitor": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' ./src/app.ts",
-    "dev": "concurrently \"npm run monitor\" \"npm run client\"",
-    "build": "tsc && cd client && npm install && npm run build",
-    "start": "npm run build && node ./dist/app.js"
+    "test": "mocha ./src",
+    "dev": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "build": "cd client && npm install && npm run build",
+    "start": "npm run build && node server.js"
   },
   "husky": {
     "hooks": {
@@ -26,11 +24,6 @@
     "*.{css,html,json,md}": [
       "prettier --write",
       "git add"
-    ],
-    "*.ts": [
-      "tslint --fix",
-      "prettier --write",
-      "git add"
     ]
   },
   "repository": {
@@ -44,20 +37,13 @@
   },
   "homepage": "https://github.com/jackson-elfers/node-cra-server#readme",
   "devDependencies": {
-    "@types/expect": "^24.3.0",
-    "@types/express": "^4.17.2",
-    "@types/mocha": "^5.2.7",
     "concurrently": "^5.0.0",
     "eslint": "^6.5.1",
     "husky": "^3.0.9",
     "lint-staged": "^9.4.2",
     "mocha": "^6.2.2",
     "nodemon": "^1.19.4",
-    "prettier": "^1.18.2",
-    "ts-mocha": "^6.0.0",
-    "ts-node": "^8.6.2",
-    "tslint": "^5.20.1",
-    "typescript": "^3.7.5"
+    "prettier": "^1.18.2"
   },
   "dependencies": {
     "dotenv": "^8.2.0",

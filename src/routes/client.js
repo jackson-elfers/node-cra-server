@@ -1,5 +1,3 @@
-export {};
-
 const control = require("../controllers");
 
 module.exports = function(app) {
