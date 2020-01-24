@@ -6,14 +6,20 @@ const app = express();
 async function main() {
   // connect database
   db.connect();
+  try {
+    // seed database tables
+    await db.actions.models();
+  } catch (e) {
+    console.log("database: failed to connect...");
+    console.log("database: please verify .env credentials.");
+    process.exit();
+  }
   console.log("database: connected");
-  // seed database tables
-  await db.actions.models();
   // start server
   app.listen(process.env.PORT, function() {
     require("./src")(app);
     console.log("server: connected");
-    console.log("port: " + process.env.PORT);
+    console.log("server: listening on port " + process.env.PORT);
   });
 }
 
