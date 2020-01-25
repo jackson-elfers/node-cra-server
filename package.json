@@ -46,6 +46,7 @@
     "prettier": "^1.18.2"
   },
   "dependencies": {
+    "check-types": "^11.1.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-force-https": "^1.0.0",
