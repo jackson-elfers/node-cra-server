@@ -4,16 +4,10 @@ const db = require("./src/db");
 const app = express();
 
 async function main() {
-  // connect database
-  db.connect();
-  try {
-    // seed database tables
-    await db.actions.models();
-  } catch (e) {
-    console.log("database: failed to connect...");
-    console.log("database: please verify .env credentials.");
-    process.exit();
-  }
+  // test database connection
+  await db.ready();
+  // seed database models
+  await db.actions.models();
   console.log("database: connected");
   // start server
   app.listen(process.env.PORT, function() {

@@ -2,16 +2,24 @@ const check = require("check-types");
 const mysql = require("mysql");
 const models = require("./models");
 
-var connection = null;
+var connection = mysql.createPool({
+  connectionLimit: process.env.MYSQL_CONNECTION_LIMIT,
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
+  debug: false
+});
 
-module.exports.connect = function() {
-  connection = mysql.createPool({
-    connectionLimit: process.env.MYSQL_CONNECTION_LIMIT,
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
-    debug: false
+module.exports.ready = function() {
+  return new Promise((resolve, reject) => {
+    connection.query("select uuid()", function(error, result, fields) {
+      if (error) {
+        reject(error);
+      } else {
+        resolve();
+      }
+    });
   });
 };
 
@@ -36,4 +44,6 @@ module.exports.query = function(string, info) {
   });
 };
 
-module.exports.actions = { models: models };
+module.exports.actions = {
+  models: models
+};
