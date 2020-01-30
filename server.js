@@ -4,6 +4,8 @@ const db = require("./src/db");
 const app = express();
 
 async function main() {
+  // connect database
+  db.connect();
   // test database connection
   await db.ready();
   // seed database models
