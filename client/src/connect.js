@@ -4,7 +4,7 @@ import * as errorActions from "./actions/error-actions.js";
 
 function mapStateToProps(state) {
   return {
-    redux: state
+    globals: state
   };
 }
 
@@ -17,8 +17,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default function(component) {
-  return connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(component);
+  return connect(mapStateToProps, mapDispatchToProps)(component);
 }
