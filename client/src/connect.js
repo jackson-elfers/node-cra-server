@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as errorActions from "./actions/error-actions.js";
 
 function mapStateToProps(state) {
   return {
@@ -10,9 +9,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: {
-      error: bindActionCreators(errorActions, dispatch)
-    }
+    actions: {}
   };
 }
 
